@@ -7,7 +7,6 @@ This is the first version of Cain's Voyage. Currently, your health is tied to yo
 # Known bugs 
 
 IV bag creates infinite money (VERY BROKEN)
-Head of the keeper is applied to the player every time the run loads (stackable)
 
 # Link to the mod
 
