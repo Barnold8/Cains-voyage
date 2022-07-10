@@ -4,10 +4,11 @@ local CV = RegisterMod("CainsVoyage",1)
 local function CV_PlayerInit(_,bool)
 
     player = Isaac.GetPlayer(0)
-    print(type(bool))
-    if(player:GetName() == "Cain" and bool == true) then
+
+    if(player:GetName() == "Cain" and not bool) then
         player:AddCollectible(CollectibleType.COLLECTIBLE_HEAD_OF_THE_KEEPER)
     end
+  
 
 end
 
