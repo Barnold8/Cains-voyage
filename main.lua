@@ -1,11 +1,11 @@
 local CV = RegisterMod("CainsVoyage",1) 
 
 
-local function CV_PlayerInit(_placeholder)
-
+local function CV_PlayerInit(_,bool)
 
     player = Isaac.GetPlayer(0)
-    if(player:GetName() == "Cain") then
+    print(type(bool))
+    if(player:GetName() == "Cain" and bool == true) then
         player:AddCollectible(CollectibleType.COLLECTIBLE_HEAD_OF_THE_KEEPER)
     end
 
@@ -35,7 +35,7 @@ local function CV_processCoin() -- Renders every frame which isnt efficient, may
         if(player:GetHearts() > CV_hearts)then
             player:AddHearts(-1)
         end
-        print(player:GetHearts(),CV_hearts)
+        -- print(player:GetHearts(),CV_hearts)
         end
 end
 
