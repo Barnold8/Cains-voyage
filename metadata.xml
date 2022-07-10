@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+    <name>Cain's Voyage</name>
+    <directory>cainsvoyage</directory>
+    <id>2833085106</id>
+    <description>This is the first version of Cain's Voyage. Currently, your health is  tied to your coin amount, so spend wisely. </description>
+    <version>1.1</version>
+    <visibility>Public</visibility>
+    <tag id="Lua"/>
+    <tag id="Player Characters"/>
+    <tag id="Challenges"/>
+    <tag id="Tweaks"/>
+    <tag id="Graphics"/>
+</metadata>
