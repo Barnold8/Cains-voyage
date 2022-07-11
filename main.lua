@@ -1,33 +1,20 @@
 local CV = RegisterMod("CainsVoyage",1) 
+local player = Isaac.GetPlayer(0)
 
 
 local function CV_PlayerInit(_,bool)
-
-    player = Isaac.GetPlayer(0)
-
+  
     if(player:GetName() == "Cain" and not bool) then
         player:AddCollectible(CollectibleType.COLLECTIBLE_HEAD_OF_THE_KEEPER)
     end
   
-
 end
 
--- local function CV_processCoin(entity)
 
---     local player = Isaac.GetPlayer(0)
---     print("process coin ran")
---     print(entity)
-    
---     if(player:GetName() == "Cain") then
---         local CV_hearts = player.coins / 2  
---         player.hearts = CV_hearts  
---     end
+local function CV_processCoin() -- Called every frame which isnt efficient, may need to work it into the pickup event (which didnt detect anything)
 
 
--- end
 
-local function CV_processCoin() -- Renders every frame which isnt efficient, may need to work it into the pickup event (which didnt detect anything)
-    local player = Isaac.GetPlayer(0)
     if(player:GetName() == "Cain") then
         local CV_hearts = player:GetNumCoins() 
         if(CV_hearts > player:GetHearts())then
@@ -38,19 +25,27 @@ local function CV_processCoin() -- Renders every frame which isnt efficient, may
         end
         -- print(player:GetHearts(),CV_hearts)
         end
+
 end
 
 local function CV_removeCoin()
-
-    local player = Isaac.GetPlayer(0)
+    
     if(player:GetName() == "Cain") then
         player:AddCoins(-1)
     end
 end
 
-CV:AddCallback(ModCallbacks.MC_POST_UPDATE, CV_processCoin)
-CV:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, CV_removeCoin,EntityType.ENTITY_PLAYER)
+local function CV_halfCoins()
 
+    if(player:GetName() == "Cain") then
+        player:AddCoins(-math.floor(player:GetNumCoins()/2))
+    end
+
+end
+
+
+CV:AddCallback(ModCallbacks.MC_POST_UPDATE, CV_processCoin)
+CV:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, CV_halfCoins,EntityType.ENTITY_PLAYER)
 CV:AddCallback(ModCallbacks.MC_POST_GAME_STARTED,CV_PlayerInit) -- Need to change callback to when the run first starts
 
 -- CV:AddCallback(ModCallbacks.MC_PRE_PICKUP_COLLISION, CV_processCoin, EntityType.ENTITY_PICKUP)
