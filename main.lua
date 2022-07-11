@@ -1,9 +1,11 @@
 local CV = RegisterMod("CainsVoyage",1) 
-local player = Isaac.GetPlayer(0)
+
 
 
 local function CV_PlayerInit(_,bool)
   
+    local player = Isaac.GetPlayer(0)
+
     if(player:GetName() == "Cain" and not bool) then
         player:AddCollectible(CollectibleType.COLLECTIBLE_HEAD_OF_THE_KEEPER)
     end
@@ -13,7 +15,7 @@ end
 
 local function CV_processCoin() -- Called every frame which isnt efficient, may need to work it into the pickup event (which didnt detect anything)
 
-
+    local player = Isaac.GetPlayer(0)
 
     if(player:GetName() == "Cain") then
         local CV_hearts = player:GetNumCoins() 
@@ -29,13 +31,17 @@ local function CV_processCoin() -- Called every frame which isnt efficient, may 
 end
 
 local function CV_removeCoin()
-    
+
+    local player = Isaac.GetPlayer(0)
+
     if(player:GetName() == "Cain") then
         player:AddCoins(-1)
     end
 end
 
 local function CV_halfCoins()
+
+    local player = Isaac.GetPlayer(0)
 
     if(player:GetName() == "Cain") then
         player:AddCoins(-math.floor(player:GetNumCoins()/2))
