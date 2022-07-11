@@ -50,7 +50,7 @@ local function CV_halfCoins()
 end
 
 
-CV:AddCallback(ModCallbacks.MC_POST_UPDATE, CV_processCoin)
+CV:AddCallback(ModCallbacks.MC_POST_RENDER, CV_processCoin)
 CV:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, CV_halfCoins,EntityType.ENTITY_PLAYER)
 CV:AddCallback(ModCallbacks.MC_POST_GAME_STARTED,CV_PlayerInit) -- Need to change callback to when the run first starts
 
